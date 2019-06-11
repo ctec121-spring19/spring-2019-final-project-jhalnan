@@ -30,9 +30,9 @@ def main():
     gridLine4 = gridLine3.clone()
     gridLine4.move(0,1)
 
-    gridDrawList = [playArea, messageArea, message, gridLine1, gridLine2, gridLine3, gridLine4]
+    drawList = [playArea, messageArea, message, gridLine1, gridLine2, gridLine3, gridLine4]
 
-    for item in gridDrawList:
+    for item in drawList:
         item.draw(win)
 
     cordx = 1.5
