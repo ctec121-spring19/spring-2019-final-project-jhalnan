@@ -11,110 +11,69 @@ v = View()
 class Model:
 
     def __init__(self):
-        cell0, cell1, cell2, cell3, cell4, cell5, cell6, cell7, cell8 = ""
 
-        if cell0 is "X":
-            v.cordx = 0.5
-            v.cordy = 0.5
-            v.fillX.setText("X")
-            v.fillX.draw(v.win)
-            gameWin()
-            player = "O"
-            return
-        elif cell1 is "X":
-            v.cordx = 1.5
-            v.cordy = 0.5
-            v.fillX.setText("X")
-            v.fillX.draw(v.win)
-        elif cell2 is "X":
-            v.cordx = 2.5
-            v.cordy = 0.5
-            v.fillX.setText("X")
-            v.fillX.draw(v.win)
-        elif cell3 is "X":
-            v.cordx = 0.5
-            v.cordy = 1.5
-            v.fillX.setText("X")
-            v.fillX.draw(v.win)
-        elif cell4 is "X":
-            v.cordx = 1.5
-            v.cordy = 1.5
-            v.fillX.setText("X")
-            v.fillX.draw(v.win)
-        elif cell5 is "X":
-            v.cordx = 2.5
-            v.cordy = 1.5
-            v.fillX.setText("X")
-            v.fillX.draw(v.win)
-        elif cell6 is "X":
-            v.cordx = 0.5
-            v.cordy = 2.5
-            v.fillX.setText("X")
-            v.fillx.draw(v.win)
-        elif cell7 is "X":
-            v.cordx = 1.5
-            v.cordy = 2.5
-            v.fillX.setText("X")
-            v.fillX.draw(v.win)
-        elif cell8 is "X":
-            v.cordx = 2.5
-            v.cordy = 2.5
-            v.fillX.setText("X")
-            v.fillX.draw(v.win)
-        elif cell0 is "O":
-            v.cordx = 0.5
-            v.cordy = 0.5
-            v.fillO.setText("O")
-            v.fillO.draw(v.win)
-        elif cell1 is "O":
-            v.cordx = 1.5
-            v.cordy = 0.5
-            v.fillO.setText("O")
-            v.fillO.draw(v.win)
-        elif cell2 is "O":
-            v.cordx = 2.5
-            v.cordy = 0.5
-            v.fillO.setText("O")
-            v.fillO.draw(v.win)
-        elif cell3 is "O":
-            v.cordx = 0.5
-            v.cordy = 1.5
-            v.fillO.setText("O")
-            v.fillO.draw(v.win)
-        elif cell4 is "O":
-            v.cordx = 1.5
-            v.cordy = 1.5
-            v.fillO.setText("O")
-            v.fillO.draw(v.win)
-        elif cell5 is "O":
-            v.cordx = 2.5
-            v.cordy = 1.5
-            v.fillO.setText("O")
-            v.fillO.draw(v.win)
-        elif cell6 is "O":
-            v.cordx = 0.5
-            v.cordy = 2.5
-            v.fillO.setText("O")
-            v.fillO.draw(v.win)
-        elif cell7 is "O":
-            v.cordx = 1.5
-            v.cordy = 2.5
-            v.fillO.setText("O")
-            v.fillO.draw(v.win)
-        elif cell8 is "O":
-            v.cordx = 2.5
-            v.cordy = 2.5
-            v.fillO.setText("O")
-            v.fillO.draw(v.win)
-        else:
-            v.message.setText("Please choose an empty space.")
+        playX = []
+        playO = []
+        #Following list is for the message area at the top. Used by the Controller to tell the player to click in the grid. npa = Non-Play Area
+        npa = [9, 10, 11]
+
+        click = v.getClick()
+
+        # Tells view to draw the X's based on click
+        def playerX():
+            if click == 0:
+                v.drawX(0)
+            elif click == 1:
+                v.drawX(1)
+            elif click == 2:
+                v.drawX(2)
+            elif click == 3:
+                v.drawX(3)
+            elif click == 4:
+                v.drawX(4)
+            elif click == 5:
+                v.drawX(5)
+            elif click == 6:
+                v.drawX(6)
+            elif click == 7:
+                v.drawX(7)
+            elif click == 8:
+                v.drawX(8)
+
+        # Tells view to draw the O's based on the click
+        def playerO():
+            if click == 0:
+                v.drawO(0)
+            elif click == 1:
+                v.drawO(1)
+            elif click == 2:
+                v.drawO(2)
+            elif click == 3:
+                v.drawO(3)
+            elif click == 4:
+                v.drawO(4)
+            elif click == 5:
+                v.drawO(5)
+            elif click == 6:
+                v.drawO(6)
+            elif click == 7:
+                v.drawO(7)
+            elif click == 8:
+                v.drawO(8)
 
     def gameWin(self):
-        if self.cell0 is "X" and self.cell1 is "X" and self.cell2 is "X":
+
+        # Defines the win conditions
+        winConditions = [[0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,7], [2,5,8], [2,4,6], [0,4,8]]
+
+        # Compares palyers' clicks to the win conditions.
+        if self.playX in winConditions:
             v.message.setText("Player X wins!")
+        elif self.playO in winConditions:
+            v.message.setText("Player O wins!")
         else:
             return
-
+        
 def ModelTest():
     
     pass

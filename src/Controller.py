@@ -16,28 +16,22 @@ class Controller:
         
         player = "X"
         playAgain = True
+        click = v.getClick()
 
+        # First part of inner loop checks to see if the space is available. Second statement sees if the user clicked in the non-play area. The Else statement appends the move to the lists in the Model and switches players.
         while playAgain is True:
-            if Model.cell0 is "":
-                Model.cell0 = player
-            elif Model.cell1 is "":
-                Model.cell1 = player
-            elif Model.cell2 is "":
-                Model.cell2 = player
-            elif Model.cell3 is "":
-                Model.cell3 = player
-            elif Model.cell4 is "":
-                Model.cell4 = player
-            elif Model.cell5 is "":
-                Model.cell5 = player
-            elif Model.cell6 is "":
-                Model.cell6 = player
-            elif Model.cell7 is "":
-                Model.cell7 = player
-            elif Model.cell8 is "":
-                Model.cell8 = player
-            else:
+            
+            if click in m.playX or click in m.playO:
                 v.message.setText("Please choose an empty space.")
+            elif click in npa:
+                v.message.setText("Please click in the grid bellow.")
+            else:
+                if player is "X":
+                    m.playX.append(click)
+                    player = "O"
+                elif player is "O":
+                    m.playO.append(click)
+                    player = "X"
 
 
 

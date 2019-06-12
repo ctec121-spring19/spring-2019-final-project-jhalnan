@@ -27,7 +27,7 @@ class View:
 
         #sets the initial message and creates the message in the message area.
 
-        textForMessage = "It's Player X's turn."
+        textForMessage = ""
 
         message = Text(Point(1.5, 3.5), textForMessage)
         message.setSize(18)
@@ -52,8 +52,8 @@ class View:
         for item in gridDrawList:
             item.draw(self.win)
 
-        cordx = 0.5
-        cordy = 0.5
+        cordx = 0
+        cordy = 0
 
         fillX = Text(Point(cordx, cordy), "X")
         fillX.setFace("helvetica")
@@ -62,6 +62,43 @@ class View:
         fillX.setTextColor("purple")
     
         fillO = fillX.clone()
+    
+    def drawX(self, click):
+        self.fillX.setText("X")
+        if click == 0 or click == 3 or click == 6:
+            cordx = 0.5
+        elif click == 1 or click == 4 or click == 7:
+            cordx = 1.5
+        elif click == 2 or click == 5 or click == 8:
+            cordx = 2.5
+
+        if click == 0 or click == 1 or click == 2:
+            cordy = 0.5
+        elif click == 3 or click == 4 or click == 5:
+            cordy = 1.5
+        elif click == 6 or click == 7 or click == 8:
+            cordy = 2.5
+        
+        self.fillX.draw(self.win)
+
+    def drawO(self, click):
+        self.fillX.setText("O")
+        if click == 0 or click == 3 or click == 6:
+            cordx = 0.5
+        elif click == 1 or click == 4 or click == 7:
+            cordx = 1.5
+        elif click == 2 or click == 5 or click == 8:
+            cordx = 2.5
+
+        if click == 0 or click == 1 or click == 2:
+            cordy = 0.5
+        elif click == 3 or click == 4 or click == 5:
+            cordy = 1.5
+        elif click == 6 or click == 7 or click == 8:
+            cordy = 2.5
+        
+        self.fillO.draw(self.win)
+
 
     def getClick(self):
         point = self.win.getMouse()
@@ -69,10 +106,9 @@ class View:
         return cellNum
 
 def ViewTest():
-    
+
     v = View()
-    while v.win:
-        print(v.getClick())
+    v.getClick()
     input()
     
 
