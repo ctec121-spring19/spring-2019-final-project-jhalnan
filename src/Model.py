@@ -5,8 +5,9 @@
 # Keeps track of what's in each cell. Updates when told by the Controller. Provides logic and detirmines if there is a winner or a draw.
 
 import View
+import time
 
-v = View()
+v = View.View()
 
 class Model:
 
@@ -69,14 +70,28 @@ class Model:
         # Compares palyers' clicks to the win conditions.
         if self.playX in winConditions:
             v.message.setText("Player X wins!")
+            self.runAgain()
         elif self.playO in winConditions:
             v.message.setText("Player O wins!")
+            self.runAgain()
         else:
             return
         
+    def runAgain(self, again):
+        v.message.setText("Play again? (y/n)")
+
+        answer = v.win.checkKey()
+
+        if answer == "y":
+            v.reset()
+        if answer == "n":
+            v.message.setText("Thanks for playing")
+            time.sleep(10)
+            v.win.close()
+
 def ModelTest():
     
-    pass
+    v
 
 if __name__ == "__main__":
     ModelTest()

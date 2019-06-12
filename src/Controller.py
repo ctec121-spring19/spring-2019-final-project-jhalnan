@@ -23,8 +23,8 @@ class Controller:
             
             if click in m.playX or click in m.playO:
                 v.message.setText("Please choose an empty space.")
-            elif click in npa:
-                v.message.setText("Please click in the grid bellow.")
+            elif click in m.npa:
+                v.message.setText("Please click in the grid below.")
             else:
                 if player is "X":
                     m.playX.append(click)
