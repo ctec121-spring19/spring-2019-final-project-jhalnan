@@ -118,7 +118,7 @@ class View:
             obj.undraw()
         self.objectList.clear()
 
-    def getClick(self):
+    def getClick(self, cellNum):
         point = self.win.getMouse()
         cellNum = int(point.getY())*3 + int(point.getX())
         return cellNum

@@ -7,21 +7,20 @@
 import View
 import time
 
-v = View.View()
 
 class Model:
 
     def __init__(self):
+        
+        self.v = View()
 
         playX = []
         playO = []
         #Following list is for the message area at the top. Used by the Controller to tell the player to click in the grid. npa = Non-Play Area
         npa = [9, 10, 11]
 
-        click = v.getClick()
-
         # Tells view to draw the X's based on click
-        def playerX():
+        def playerX(click):
             if click == 0:
                 v.drawX(0)
             elif click == 1:
@@ -42,7 +41,7 @@ class Model:
                 v.drawX(8)
 
         # Tells view to draw the O's based on the click
-        def playerO():
+        def playerO(click):
             if click == 0:
                 v.drawO(0)
             elif click == 1:
@@ -65,6 +64,7 @@ class Model:
     def gameWin(self):
 
         # Defines the win conditions
+        # nested if structure 
         winConditions = [[0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,7], [2,5,8], [2,4,6], [0,4,8]]
 
         # Compares palyers' clicks to the win conditions.
@@ -76,22 +76,15 @@ class Model:
             self.runAgain()
         else:
             return
-        
-    def runAgain(self, again):
-        v.message.setText("Play again? (y/n)")
 
-        answer = v.win.checkKey()
 
-        if answer == "y":
-            v.reset()
-        if answer == "n":
-            v.message.setText("Thanks for playing")
-            time.sleep(10)
-            v.win.close()
+
+    def reset(self):
+        pass
 
 def ModelTest():
     
-    v
+    pass
 
 if __name__ == "__main__":
     ModelTest()
