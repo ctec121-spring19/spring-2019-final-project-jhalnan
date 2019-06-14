@@ -118,13 +118,16 @@ class View:
             obj.undraw()
         self.objectList.clear()
 
-    def getClick(self, cellNum):
+    def getClick(self):
         point = self.win.getMouse()
         cellNum = int(point.getY())*3 + int(point.getX())
         return cellNum
 
 def ViewTest():
-    pass
+    v = View()
+    
+    while v.win:
+        print(v.getClick())
 
 if __name__ == "__main__":
     ViewTest()

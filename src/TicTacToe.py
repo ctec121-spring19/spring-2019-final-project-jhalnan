@@ -1,8 +1,9 @@
 # TicTacToe.py
 
  
-import Controller 
+from Controller import Controller 
 
 def main():
-    pass
+    c = Controller()
+    c.playGame()
 main()
