@@ -61,23 +61,22 @@ class Controller:
                 self.m.playerX(cellNum)
                 self.m.playX.append(cellNum)
                 self.m.playX.sort()
-                print("X: " , self.m.playX)
             elif self.player is "O":
                 self.m.playerO(cellNum)
                 self.m.playO.append(cellNum)
                 self.m.playO.sort()
-                print("O: " , self.m.playO)
 
             # Defines a result variable based on Model's gameWin method. The returning result is then checked to see if the current player won, the game was a tie, or neither. If a player won, the game will display a win message for that player and then break out of the loop (and method) and return to playGame(). If the game is a tie, the game will display a tie message and return to playGame(). If neither, the game continues.
 
             result = self.m.gameWin()
+            
             if result in ("X", "O"):
                 self.v.message.setText("Player {} wins!".format(self.player))
-                time.sleep(10)
+                time.sleep(5)
                 break
             elif result == "tie":
                 self.v.message.setText("It's a tie!")
-                time.sleep(10)
+                time.sleep(5)
                 break
             elif result == "continue":
                 pass
@@ -96,25 +95,23 @@ class Controller:
 
         answer = self.v.win.getKey()
 
-        for key in answer:
+        while True:
             if answer == "y":
                 self.v.reset()
                 self.m.reset()
                 break
             elif answer == "n":
                 self.v.message.setText("Thanks for playing!")
-                time.sleep(10)
+                time.sleep(5)
                 self.v.win.close()
             else:
                 self.v.message.setText("Please type 'y' or 'n' to continue.")
+                answer = self.v.win.getKey()
                 continue
 
 
 def ControllerTest():
-    
-    c = Controller()
-
-    c.playGame()
+    pass
     
 
 if __name__ == "__main__":

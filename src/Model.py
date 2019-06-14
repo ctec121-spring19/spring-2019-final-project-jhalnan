@@ -63,31 +63,21 @@ class Model:
     def gameWin(self):
 
         # Defines the win conditions
-        # DOES NOT WORK!!!!!!!!!!!!!!!!! AAAAAHHHHHHH
-        winConditions = [[0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,7], [2,5,8], [2,4,6], [0,4,8]]
 
-        print(winConditions[0])
+        # winConditions = [[0 and 1 and 2], [3 and 4 and 5], [6 and 7 and 8], [0 and 3 and 6], [1 and 4 and 7], [2 and 5 and 8], [2 and 4 and 6], [0 and 4 and 8]]
 
-        for condition in winConditions:
-            if self.playX in winConditions[0]:
-                return "X"
-            else:
-                return "continue"
-
-        # for item in winConditions:
-        #     if item in self.playX:
-        #         return "X"
-        #     elif item in self.playO:
-        #         return "O"
-        #     else:
-        #         break
-        # if len(self.playX) + len(self.playO) == 9:
-        #     return "tie"
-        # else:
-        #     return "continue"
+        if (0 in self.playX and 1 in self.playX and 2 in self.playX) or (3 in self.playX and 4 in self.playX and 5 in self.playX) or (6 in self.playX and 7 in self.playX and 8 in self.playX) or (0 in self.playX and 3 in self.playX and 6 in self.playX) or (1 in self.playX and 4 in self.playX and 7 in self.playX) or (2 in self.playX and 5 in self.playX and 8 in self.playX) or (2 in self.playX and 4 in self.playX and 6 in self.playX) or (0 in self.playX and 4 in self.playX and 8 in self.playX):
+            return "X"
+        if (0 in self.playO and 1 in self.playO and 2 in self.playO) or (3 in self.playO and 4 in self.playO and 5 in self.playO) or (6 in self.playO and 7 in self.playO and 8 in self.playO) or (0 in self.playO and 3 in self.playO and 6 in self.playO) or (1 in self.playO and 4 in self.playO and 7 in self.playO) or (2 in self.playO and 5 in self.playO and 8 in self.playO) or (2 in self.playO and 4 in self.playO and 6 in self.playO) or (0 in self.playO and 4 in self.playO and 8 in self.playO):
+            return "O"
+        elif len(self.playX) + len(self.playO) == 9:
+            return "tie"
+        else:
+            return "continue"
 
     def reset(self):
-        pass
+        self.playX.clear()
+        self.playO.clear()
 
 def ModelTest():
     

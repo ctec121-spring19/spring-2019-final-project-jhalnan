@@ -124,10 +124,7 @@ class View:
         return cellNum
 
 def ViewTest():
-    v = View()
-    
-    while v.win:
-        print(v.getClick())
+    pass
 
 if __name__ == "__main__":
     ViewTest()
