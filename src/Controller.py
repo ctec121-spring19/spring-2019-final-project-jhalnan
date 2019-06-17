@@ -151,7 +151,6 @@ class Controller:
                     time.sleep(.125)
                     self.v.message.setTextColor("blue")
                     time.sleep(.125)
-                break
                 self.v.win.close()
             else:
                 self.v.message.setTextColor("red")
